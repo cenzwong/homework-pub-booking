@@ -49,7 +49,7 @@ def _build_fake_client() -> FakeLLMClient:
             {
                 "id": "sg_2",
                 "description": "produce an HTML flyer with the chosen venue, weather, and cost",
-                "success_criterion": "flyer.html written to workspace/",
+                "success_criterion": "flyer.md written to workspace/",
                 "estimated_tool_calls": 1,
                 "depends_on": ["sg_1"],
                 "assigned_half": "loop",
@@ -96,7 +96,7 @@ def _build_fake_client() -> FakeLLMClient:
     complete_call = ToolCall(
         id="c5",
         name="complete_task",
-        arguments={"result": {"flyer": "workspace/flyer.html", "venue": "haymarket_tap"}},
+        arguments={"result": {"flyer": "workspace/flyer.md", "venue": "haymarket_tap"}},
     )
 
     return FakeLLMClient(
@@ -106,7 +106,7 @@ def _build_fake_client() -> FakeLLMClient:
             ScriptedResponse(tool_calls=[flyer_call]),
             ScriptedResponse(tool_calls=[complete_call]),
             ScriptedResponse(content="Subgoal 1 complete."),
-            ScriptedResponse(content="Booking researched; flyer at workspace/flyer.html."),
+            ScriptedResponse(content="Booking researched; flyer at workspace/flyer.md."),
             ScriptedResponse(content="Task complete."),
         ]
     )
@@ -196,28 +196,34 @@ async def run_scenario(real: bool) -> int:
     clear_log()
 
     with example_sessions_dir("ex5-edinburgh-research", persist=real) as sessions_root:
+        task_text = (
+            "Research an Edinburgh pub and produce a markdown event flyer.\n\n"
+            "Context:\n"
+            "  - party size: 6\n"
+            "  - date: 2026-04-25 (a Saturday)\n"
+            "  - time: 19:30\n"
+            "  - area: near Haymarket station, Edinburgh\n\n"
+            "REQUIRED tool sequence (all four tools MUST run, in order):\n"
+            "  1. venue_search(near='Haymarket', party_size=6, budget_max_gbp=800)\n"
+            "  2. get_weather(city='edinburgh', date='2026-04-25')\n"
+            "  3. calculate_cost(venue_id=<chosen pub's id>, party_size=6,\n"
+            "                    duration_hours=3, catering_tier='bar_snacks')\n"
+            "  4. generate_flyer(event_details={...})  <-- MUST be called\n"
+            "  5. complete_task(result={'flyer': 'workspace/flyer.md', ...})\n\n"
+            "CRITICAL INSTRUCTIONS:\n"
+            "- Do NOT use handoff_to_structured under any circumstances.\n"
+            "- PLANNER: Create EXACTLY ONE subgoal that encompasses the entire REQUIRED tool sequence. Do not split this into multiple subgoals. All 4 tools must be run in this single subgoal.\n"
+            "- EXECUTOR: You MUST extract the venue_id from the venue_search result and pass it to calculate_cost.\n"
+            "- EXECUTOR: Do NOT call complete_task until you have successfully called generate_flyer.\n"
+            "The scenario is graded by the existence of workspace/flyer.md, "
+            "not by your final text response. The flyer is markdown — exact tool "
+            "names and argument shapes are in each tool's docstring; call them "
+            "exactly as described."
+        )
+
         session = create_session(
             scenario="edinburgh-research",
-            task=(
-                "Research an Edinburgh pub and produce an HTML event flyer.\n\n"
-                "Context:\n"
-                "  - party size: 6\n"
-                "  - date: 2026-04-25 (a Saturday)\n"
-                "  - time: 19:30\n"
-                "  - area: near Haymarket station, Edinburgh\n\n"
-                "REQUIRED tool sequence (all four tools MUST run, in order):\n"
-                "  1. venue_search(near='Haymarket', party_size=6, budget_max_gbp=800)\n"
-                "  2. get_weather(city='edinburgh', date='2026-04-25')\n"
-                "  3. calculate_cost(venue_id=<chosen pub's id>, party_size=6,\n"
-                "                    duration_hours=3, catering_tier='bar_snacks')\n"
-                "  4. generate_flyer(event_details={...})  <-- MUST be called\n"
-                "  5. complete_task(result={'flyer': 'workspace/flyer.html', ...})\n\n"
-                "Do NOT call complete_task until you have called generate_flyer. "
-                "The scenario is graded by the existence of workspace/flyer.html, "
-                "not by your final text response. The flyer is HTML — exact tool "
-                "names and argument shapes are in each tool's docstring; call them "
-                "exactly as described."
-            ),
+            task=task_text,
             sessions_dir=sessions_root,
         )
         print(f"Session {session.session_id}")
@@ -247,7 +253,7 @@ async def run_scenario(real: bool) -> int:
             executor=DefaultExecutor(model=executor_model, client=client, tools=tools),  # type: ignore[arg-type]
         )
 
-        result = await half.run(session, {"task": "research Edinburgh venue and write flyer"})
+        result = await half.run(session, {"task": task_text})
         print(f"\nLoop half outcome: {result.next_action}")
         print(f"  summary: {result.summary}")
 
@@ -256,7 +262,7 @@ async def run_scenario(real: bool) -> int:
             r = t.read_result()
             print(f"  {t.ticket_id}  {t.operation:50s}  {r.state.value}")
 
-        flyer_path = session.workspace_dir / "flyer.html"
+        flyer_path = session.workspace_dir / "flyer.md"
         if not flyer_path.exists():
             print("\n✗ No flyer written to workspace/. Ex5 failed.")
             from starter.edinburgh_research.integrity import _TOOL_CALL_LOG
@@ -277,7 +283,7 @@ async def run_scenario(real: bool) -> int:
                 print(f"  Check the trace: {session.trace_path}")
             return 1
 
-        print(f"\n=== flyer.html ({flyer_path.stat().st_size} bytes) ===")
+        print(f"\n=== flyer.md ({flyer_path.stat().st_size} bytes) ===")
         flyer_content = flyer_path.read_text(encoding="utf-8")
         print(flyer_content[:500] + ("...\n[truncated]" if len(flyer_content) > 500 else ""))
 

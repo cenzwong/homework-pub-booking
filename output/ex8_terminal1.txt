@@ -1,0 +1,20 @@
+cenzwong@192 homework-pub-booking % make ex8-text
+Session sess_142ac23af4c5
+  dir: /Users/cenzwong/Library/Application Support/sovereign-agent/homework/ex8/sess_142ac23af4c5
+Text mode. Type a message to Alasdair (pub manager); blank line to quit.
+Session: sess_142ac23af4c5
+------------------------------------------------------------
+you> hi
+alasdair> What can I do for ye? Booking inquiry, I suppose?
+you> Yes
+alasdair> How many in yer party?
+you> 10
+alasdair> Too big, I'm afraid. Try The Royal Oak or Bennet's Bar, they can handle larger groups.
+you> Royal Oak 
+alasdair> Aye, they'll sort ye out. We're too small for parties o' yer size.
+you> Bennet's Bar?
+alasdair> Same story, too big for us. Bennet's Bar might be a better fit.
+you> 2 in the party
+alasdair> Aye, we can do that. I'll pencil you in. What's the contact number?
+------------------------------------------------------------
+Conversation ended. Trace: /Users/cenzwong/Library/Application Support/sovereign-agent/homework/ex8/sess_142ac23af4c5/logs/trace.jsonl

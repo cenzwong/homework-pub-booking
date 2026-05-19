@@ -1,0 +1,12 @@
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:20:44.061421+00:00", "payload": {"text": "hi", "turn": 0, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:20:46.048680+00:00", "payload": {"text": "What can I do for ye? Booking inquiry, I suppose?", "turn": 0, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:20:52.763617+00:00", "payload": {"text": "Yes", "turn": 1, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:20:53.595720+00:00", "payload": {"text": "How many in yer party?", "turn": 1, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:20:55.495191+00:00", "payload": {"text": "10", "turn": 2, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:20:57.282224+00:00", "payload": {"text": "Too big, I'm afraid. Try The Royal Oak or Bennet's Bar, they can handle larger groups.", "turn": 2, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:21:07.695065+00:00", "payload": {"text": "Royal Oak", "turn": 3, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:21:12.596494+00:00", "payload": {"text": "Aye, they'll sort ye out. We're too small for parties o' yer size.", "turn": 3, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:21:23.495059+00:00", "payload": {"text": "Bennet's Bar?", "turn": 4, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:21:24.707539+00:00", "payload": {"text": "Same story, too big for us. Bennet's Bar might be a better fit.", "turn": 4, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:21:32.397879+00:00", "payload": {"text": "2 in the party", "turn": 5, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:21:34.346593+00:00", "payload": {"text": "Aye, we can do that. I'll pencil you in. What's the contact number?", "turn": 5, "mode": "text"}}

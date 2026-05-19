@@ -1,0 +1,20 @@
+cenzwong@192 homework-pub-booking % make ex8-text
+Session sess_8e2d34329c98
+  dir: /Users/cenzwong/Library/Application Support/sovereign-agent/homework/ex8/sess_8e2d34329c98
+Text mode. Type a message to Alasdair (pub manager); blank line to quit.
+Session: sess_8e2d34329c98
+------------------------------------------------------------
+you> hi
+alasdair> What can I do for ye? Booking inquiry, I suppose?
+you> yes
+alasdair> How many in yer party?
+you> 2
+alasdair> Aye, we can do that. I'll pencil you in. What's the date and time?
+you> 2026 May 20 at 10
+alasdair> Aye, we can do that. I'll pencil you in for May 20, 2026 at 10. What's the contact number?
+you> 7803331234
+alasdair> Got it, 7803331234. See ye then.
+you> Thank you
+alasdair> Ye're welcome.
+------------------------------------------------------------
+Conversation ended. Trace: /Users/cenzwong/Library/Application Support/sovereign-agent/homework/ex8/sess_8e2d34329c98/logs/trace.jsonl

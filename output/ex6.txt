@@ -1,0 +1,22 @@
+(homework-pub-booking) cenzwong@192 homework-pub-booking % make ex6-real
+
+✓ Rasa is up at http://localhost:5005
+    HTTP 200 — {"version":"3.16.4","minimum_compatible_version":"3.16.0rc2"}
+✓ Action server is up at http://localhost:5055
+    HTTP 200 — {"status":"ok"}
+
+▶ Running Ex6 scenario...
+
+📂 Session sess_eb350ab5b5ac
+   dir: /Users/cenzwong/Library/Application Support/sovereign-agent/examples/ex6-rasa-half/sess_eb350ab5b5ac
+   (tier 2: assuming rasa-actions + rasa-serve are already
+    running in two other terminals. If you see a connection
+    error below, run `make ex6-help` for the setup recipe.)
+   Rasa URL: http://localhost:5005/webhooks/rest/webhook
+
+Structured half outcome: complete
+  summary: booking confirmed by rasa (ref=BK-7D401E9E)
+  output:  {'committed': True, 'booking': {'venue_id': 'haymarket_tap', 'date': '2026-04-25', 'time': '19:30', 'party_size': 6, 'deposit_gbp': 200, 'duration_hours': 3, 'catering_tier': 'bar_snacks'}, 'booking_reference': 'BK-7D401E9E', 'rasa_response': [{'recipient_id': 'homework-185d7d73', 'text': 'Booking confirmed. Reference: BK-7D401E9E.'}, {'recipient_id': 'homework-185d7d73', 'text': 'Is there anything else I can help you with?'}]}
+
+📂 Session artifacts: /Users/cenzwong/Library/Application Support/sovereign-agent/examples/ex6-rasa-half/sess_eb350ab5b5ac
+📜 Narrate this run:   make narrate SESSION=sess_eb350ab5b5ac

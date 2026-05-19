@@ -2,31 +2,18 @@
 
 ## Your answer
 
-The HandoffBridge orchestrates round-trips between the loop half and
-structured half. Each round: loop runs, if next_action=handoff_to_structured
-the bridge writes a forward handoff file, invokes structured, and then
-either marks the session complete (structured confirmed) or builds a
-reverse task and loops back (structured escalated).
+The `HandoffBridge` orchestrates bidirectional round-trips between the LLM-backed loop half and the deterministic structured half. Each round:
+1. The bridge executes the `loop_half` using the current input task, which generates subgoals and invokes tools to identify candidate booking details.
+2. If the loop agent determines it is ready to book, it returns `next_action="handoff_to_structured"`. The bridge catches this, constructs a forward handoff payload containing the booking parameters (venue, date, time, party size, deposit) using `build_forward_handoff`, and writes it to the structured half's IPC mailbox.
+3. The bridge updates the session state via `append_trace_event` with a `session.state_changed` event (from `loop` to `structured`) and invokes `structured_half.run()`.
+4. If the structured half approves, the booking is confirmed and marked complete.
+5. If the structured half rejects or escalates (returning `next_action="escalate"`), the bridge constructs a new "reverse task" using `build_reverse_task` that contains the prior proposal and the rejection reason. It logs the transition back (from `structured` to `loop` along with the `rejection_reason`), cleans up and archives the stale forward handoff file to `logs/handoffs/`, and loops back for another round.
 
-The reverse-task path is the interesting one. On escalation, the
-bridge rewrites the initial_task into a dict that contains
-prior_result + rejection_reason + retry=True. The loop half sees
-this via the new executor invocation and — in a real LLM setting —
-would produce a different subgoal. In the scripted offline demo we
-hardcode the retry choice (royal_oak with 16 seats) so the test is
-deterministic.
-
-Every half transition emits a session.state_changed trace event via
-session.append_trace_event(). The integrity check (integrity.py)
-verifies the trace has at least one round_start, at least one
-state_changed, and at least one tool call — catching the case where
-the bridge reports success without doing real work.
-
-The stale-handoff cleanup moves old ipc/handoff_to_structured.json
-files into logs/handoffs/ instead of deleting them, preserving the
-audit trail.
+In our actual offline integration session `sess_ab4cb70be2c5`, the structured half had to deal with the Rasa webhook being offline, resulting in the rejection reason `"rasa unreachable: <urlopen error [Errno 61] Connection refused>"`. The bridge successfully processed this escalation in Round 1, rewrote the task to notify the loop agent of the network failure, and routed it back to the loop. In Round 2, the loop agent adjusted its search and re-proposed a group booking at "The Royal Oak", illustrating the seamless back-and-forth orchestration.
 
 ## Citations
 
-- starter/handoff_bridge/bridge.py — HandoffBridge.run + helpers
-- starter/handoff_bridge/integrity.py — verify_dataflow
+- starter/handoff_bridge/bridge.py — `HandoffBridge.run` and state-changed orchestration logic
+- sessions/sess_ab4cb70be2c5/logs/trace.jsonl — traces demonstrating round transitions, state changes, and rejections
+- sessions/sess_ab4cb70be2c5/logs/tickets/tk_21e10234/raw_output.json — first loop planner subgoal ticket
+- sessions/sess_ab4cb70be2c5/logs/tickets/tk_f1ff2634/raw_output.json — loop executor executing forward handoff

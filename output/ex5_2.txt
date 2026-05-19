@@ -1,0 +1,33 @@
+(homework-pub-booking) cenzwong@192 homework-pub-booking % make ex5-real
+Session sess_d6bef1142fc0
+  dir: /Users/cenzwong/Library/Application Support/sovereign-agent/examples/ex5-edinburgh-research/sess_d6bef1142fc0
+  LLM: https://api.tokenfactory.nebius.com/v1/ (live)
+  planner:  Qwen/Qwen3-Next-80B-A3B-Thinking
+  executor: Qwen/Qwen3-32B
+
+Loop half outcome: complete
+  summary: loop half completed 1 subgoal(s); final answer: <think>
+Okay, let's see. The user wanted to run all the required tools to research a pub, check the weather, calculate t
+
+Tickets:
+  tk_1479ecec  executor.run_subgoal/sg_1                           success
+  tk_c084a02a  planner.plan                                        success
+
+=== flyer.md (247 bytes) ===
+# Booking Flyer
+
+* **Venue:** Unknown Venue
+* **Address:** Unknown Address
+* **Date:** Unknown Date
+* **Time:** Unknown Time
+* **Party Size:** 0
+* **Condition:** Unknown Condition
+* **Temperature:** 0C
+* **Total:** £0
+* **Deposit Required:** £0
+
+
+=== Dataflow integrity check ===
+✗  dataflow FAIL: 2 unverified fact(s): ['£0', '0']
+   Unverified facts: ['£0', '0']
+make: *** [ex5-real] Error 2

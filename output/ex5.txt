@@ -1,0 +1,22 @@
+Session sess_60f4828a418c
+  dir: /Users/cenzwong/Library/Application Support/sovereign-agent/examples/ex5-edinburgh-research/sess_60f4828a418c
+  LLM: https://api.tokenfactory.nebius.com/v1/ (live)
+  planner:  Qwen/Qwen3-Next-80B-A3B-Thinking
+  executor: Qwen/Qwen3-32B
+
+Loop half outcome: handoff_to_structured
+  summary: executor requested handoff to structured from sg_3
+
+Tickets:
+  tk_3846e974  planner.plan                                        success
+  tk_53ef9387  executor.run_subgoal/sg_3                           success
+  tk_6a08787f  executor.run_subgoal/sg_1                           success
+  tk_bec634e9  executor.run_subgoal/sg_2                           success
+
+✗ No flyer written to workspace/. Ex5 failed.
+
+  Tools that DID run (2 calls):
+    1. venue_search({'near': 'Haymarket station', 'party_size': 6, 'budget_max_gbp': 800})
+    2. get_weather({'city': 'Edinburgh', 'date': '2026-04-25'})
+
+  ★ generate_flyer was never called. The LLM either completed the task without writing the flyer, or called complete_task too early. Check sessions/<id>/logs/trace.jsonl.
