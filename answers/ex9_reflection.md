@@ -10,9 +10,9 @@ This routing decision is advisory rather than physical. The orchestrator delegat
 
 ### Citation
 
-- sessions/sess_ab4cb70be2c5/logs/tickets/tk_21e10234/raw_output.json — first planner subgoal assignment
-- sessions/sess_ab4cb70be2c5/logs/tickets/tk_f1ff2634/raw_output.json — executor executing `handoff_to_structured`
-- sessions/sess_ab4cb70be2c5/logs/trace.jsonl — round 1 transition from `loop` to `structured`
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/logs/tickets/tk_21e10234/raw_output.json — first planner subgoal assignment
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/logs/tickets/tk_f1ff2634/raw_output.json — executor executing `handoff_to_structured`
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/logs/trace.jsonl — round 1 transition from `loop` to `structured`
 
 ---
 
@@ -26,8 +26,8 @@ The integrity check successfully returned `ok=False` with `unverified_facts=['£
 
 ### Citation
 
-- sessions/sess_e53d0f559056/workspace/flyer.md — containing the validated total of £973 and deposit of £195
-- sessions/sess_e53d0f559056/logs/trace.jsonl — showing `calculate_cost` returning total £973 and deposit £195 in turn 3
+- sessions/examples/ex5-edinburgh-research/sess_e53d0f559056/workspace/flyer.md — containing the validated total of £973 and deposit of £195
+- sessions/examples/ex5-edinburgh-research/sess_e53d0f559056/logs/trace.jsonl — showing `calculate_cost` returning total £973 and deposit £195 in turn 3
 - starter/edinburgh_research/integrity.py — the `verify_dataflow` function comparing facts against `_TOOL_CALL_LOG`
 
 ---
@@ -42,5 +42,5 @@ Session directories are the bedrock of the entire sovereign-agent architecture. 
 
 ### Citation
 
-- sessions/sess_e53d0f559056/ — isolating the entire Ex5 research workspace and execution logs
-- sessions/sess_ab4cb70be2c5/ — isolating the multi-round Ex7 handoff IPC and audit history
+- sessions/examples/ex5-edinburgh-research/sess_e53d0f559056/ — isolating the entire Ex5 research workspace and execution logs
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/ — isolating the multi-round Ex7 handoff IPC and audit history

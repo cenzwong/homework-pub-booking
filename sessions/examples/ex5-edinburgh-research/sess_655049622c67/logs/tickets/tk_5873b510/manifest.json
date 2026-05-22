@@ -1,0 +1,21 @@
+{
+  "ticket_id": "tk_5873b510",
+  "operation": "planner.plan",
+  "started_at": "2026-05-22T21:26:29.942217+00:00",
+  "completed_at": "2026-05-22T21:26:47.526305+00:00",
+  "duration_ms": 17584,
+  "outputs": [
+    {
+      "path": "/Users/cenzwong/Projects/homework-pub-booking/sessions/examples/ex5-edinburgh-research/sess_655049622c67/logs/tickets/tk_5873b510/raw_output.json",
+      "sha256": "4f8f6333f37e80b25f9f74f59c06676cfc3ee0d9d7ec92a09577c0c8d08d2111",
+      "size_bytes": 350,
+      "content_type": "application/json"
+    }
+  ],
+  "metrics": {
+    "num_subgoals": 1,
+    "llm_tokens_in": 590,
+    "llm_tokens_out": 2843,
+    "llm_model": "Qwen/Qwen3-Next-80B-A3B-Thinking"
+  }
+}

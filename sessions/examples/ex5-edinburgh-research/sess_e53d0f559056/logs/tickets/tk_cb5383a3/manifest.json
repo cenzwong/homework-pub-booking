@@ -1,0 +1,20 @@
+{
+  "ticket_id": "tk_cb5383a3",
+  "operation": "executor.run_subgoal/sg_1",
+  "started_at": "2026-05-19T20:45:05.720603+00:00",
+  "completed_at": "2026-05-19T20:46:47.355597+00:00",
+  "duration_ms": 101634,
+  "outputs": [
+    {
+      "path": "/Users/cenzwong/Library/Application Support/sovereign-agent/examples/ex5-edinburgh-research/sess_e53d0f559056/logs/tickets/tk_cb5383a3/raw_output.json",
+      "sha256": "4faa440ed02ae1315678a08031583da37ecb5214559f59520c44cd4c7fc06c38",
+      "size_bytes": 4242,
+      "content_type": "application/json"
+    }
+  ],
+  "metrics": {
+    "tool_calls": 7,
+    "turns_used": 8,
+    "handoff_requested": false
+  }
+}

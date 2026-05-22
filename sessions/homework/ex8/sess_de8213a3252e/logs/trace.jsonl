@@ -1,0 +1,2 @@
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:23:49.430654+00:00", "payload": {"text": "hi", "turn": 0, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:23:50.933276+00:00", "payload": {"text": "What can I do for ye? Booking inquiry, I suppose?", "turn": 0, "mode": "text"}}

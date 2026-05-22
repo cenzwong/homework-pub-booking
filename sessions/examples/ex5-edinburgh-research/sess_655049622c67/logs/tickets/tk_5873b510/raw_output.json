@@ -1,0 +1,11 @@
+[
+  {
+    "id": "sg_1",
+    "description": "Execute all required tools in sequence to find a venue, check weather, calculate cost, generate flyer, and complete task.",
+    "success_criterion": "workspace/flyer.md exists in the workspace",
+    "estimated_tool_calls": 5,
+    "depends_on": [],
+    "assigned_half": "loop",
+    "status": "pending"
+  }
+]

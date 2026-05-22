@@ -248,8 +248,36 @@ async def run_scenario(real: bool) -> int:
             planner_model = executor_model = "fake"
 
         tools = build_tool_registry(session)
+        custom_planner_prompt = (
+            "You are the PLANNER of an always-on agent. Your job is to take a user task\n"
+            "and produce a small, ordered list of subgoals that, if executed in order,\n"
+            "will complete the task.\n\n"
+            "Output ONLY a JSON array (no prose, no markdown fences) with this shape:\n\n"
+            "  [\n"
+            "    {\n"
+            '      "id": "sg_1",\n'
+            '      "description": "<one sentence — what this subgoal accomplishes>",\n'
+            '      "success_criterion": "<how we know this subgoal is done>",\n'
+            '      "estimated_tool_calls": 1-5,\n'
+            '      "depends_on": [],\n'
+            '      "assigned_half": "loop"\n'
+            "    }\n"
+            "  ]\n\n"
+            "Rules:\n"
+            "- Keep it small: usually 1-3 subgoals.\n"
+            "- Each subgoal must be achievable with the tools described below.\n"
+            '- IMPORTANT: You MUST assign all subgoals to "loop" (assigned_half: "loop"). '
+            'Do NOT use "structured" for any subgoal under any circumstances. '
+            'Every single subgoal\'s assigned_half MUST be "loop".\n'
+            "- depends_on lists any earlier subgoals that must finish first."
+        )
+
         half = LoopHalf(
-            planner=DefaultPlanner(model=planner_model, client=client),
+            planner=DefaultPlanner(
+                model=planner_model,
+                client=client,
+                system_prompt=custom_planner_prompt if real else None,
+            ),
             executor=DefaultExecutor(model=executor_model, client=client, tools=tools),  # type: ignore[arg-type]
         )
 

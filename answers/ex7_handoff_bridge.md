@@ -14,6 +14,6 @@ In our actual offline integration session `sess_ab4cb70be2c5`, the structured ha
 ## Citations
 
 - starter/handoff_bridge/bridge.py — `HandoffBridge.run` and state-changed orchestration logic
-- sessions/sess_ab4cb70be2c5/logs/trace.jsonl — traces demonstrating round transitions, state changes, and rejections
-- sessions/sess_ab4cb70be2c5/logs/tickets/tk_21e10234/raw_output.json — first loop planner subgoal ticket
-- sessions/sess_ab4cb70be2c5/logs/tickets/tk_f1ff2634/raw_output.json — loop executor executing forward handoff
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/logs/trace.jsonl — traces demonstrating round transitions, state changes, and rejections
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/logs/tickets/tk_21e10234/raw_output.json — first loop planner subgoal ticket
+- sessions/examples/ex7-handoff-bridge/sess_ab4cb70be2c5/logs/tickets/tk_f1ff2634/raw_output.json — loop executor executing forward handoff

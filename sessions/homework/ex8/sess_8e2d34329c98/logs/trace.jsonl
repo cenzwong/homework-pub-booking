@@ -1,0 +1,12 @@
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:22:34.919515+00:00", "payload": {"text": "hi", "turn": 0, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:22:36.308099+00:00", "payload": {"text": "What can I do for ye? Booking inquiry, I suppose?", "turn": 0, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:22:38.612538+00:00", "payload": {"text": "yes", "turn": 1, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:22:39.144119+00:00", "payload": {"text": "How many in yer party?", "turn": 1, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:22:40.546354+00:00", "payload": {"text": "2", "turn": 2, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:22:42.233501+00:00", "payload": {"text": "Aye, we can do that. I'll pencil you in. What's the date and time?", "turn": 2, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:22:52.765513+00:00", "payload": {"text": "2026 May 20 at 10", "turn": 3, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:22:55.387180+00:00", "payload": {"text": "Aye, we can do that. I'll pencil you in for May 20, 2026 at 10. What's the contact number?", "turn": 3, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:23:03.873521+00:00", "payload": {"text": "7803331234", "turn": 4, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:23:05.337933+00:00", "payload": {"text": "Got it, 7803331234. See ye then.", "turn": 4, "mode": "text"}}
+{"event_type": "voice.utterance_in", "actor": "user", "timestamp": "2026-05-19T20:23:10.694695+00:00", "payload": {"text": "Thank you", "turn": 5, "mode": "text"}}
+{"event_type": "voice.utterance_out", "actor": "manager", "timestamp": "2026-05-19T20:23:11.381058+00:00", "payload": {"text": "Ye're welcome.", "turn": 5, "mode": "text"}}

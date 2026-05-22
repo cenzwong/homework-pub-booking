@@ -13,5 +13,7 @@ Three crucial design decisions shape this implementation:
 
 ## Citations
 
+- sessions/examples/ex6-rasa-half/sess_59d96dd2e0c3/logs/rasa/rasa_server.log — Rasa core server logs detailing session execution, CALM flow status, and confirmation messages
+- sessions/examples/ex6-rasa-half/sess_59d96dd2e0c3/logs/rasa/rasa_actions.log — Rasa action server logs detailing validation and action execution results
 - starter/rasa_half/validator.py — `normalise_booking_payload` and canonical validators
 - starter/rasa_half/structured_half.py — `RasaStructuredHalf.run`, network error handlers, and the mock Rasa webhook server

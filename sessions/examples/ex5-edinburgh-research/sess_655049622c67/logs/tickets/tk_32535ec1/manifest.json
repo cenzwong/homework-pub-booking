@@ -1,0 +1,20 @@
+{
+  "ticket_id": "tk_32535ec1",
+  "operation": "executor.run_subgoal/sg_1",
+  "started_at": "2026-05-22T21:26:47.531537+00:00",
+  "completed_at": "2026-05-22T21:27:56.491496+00:00",
+  "duration_ms": 68959,
+  "outputs": [
+    {
+      "path": "/Users/cenzwong/Projects/homework-pub-booking/sessions/examples/ex5-edinburgh-research/sess_655049622c67/logs/tickets/tk_32535ec1/raw_output.json",
+      "sha256": "87a3c898627009fd73257f9b5ca9226e5e0c07d83780ac47b8aa814197227bae",
+      "size_bytes": 4274,
+      "content_type": "application/json"
+    }
+  ],
+  "metrics": {
+    "tool_calls": 7,
+    "turns_used": 8,
+    "handoff_requested": false
+  }
+}

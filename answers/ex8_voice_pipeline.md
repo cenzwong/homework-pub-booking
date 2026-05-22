@@ -11,5 +11,5 @@ Regardless of transport, both modes emit uniform `voice.utterance_in` (user turn
 ## Citations
 
 - starter/voice_pipeline/voice_loop.py — `run_voice_mode`, `run_text_mode`, and degradation fallbacks
-- sessions/sess_142ac23af4c5/logs/trace.jsonl — conversation trace containing `voice.utterance_in` and `voice.utterance_out` logs spanning 6 turns
-- sessions/sess_8e2d34329c98/logs/trace.jsonl — alternative text-mode conversation trace recording a fully committed booking
+- sessions/homework/ex8/sess_142ac23af4c5/logs/trace.jsonl — conversation trace containing `voice.utterance_in` and `voice.utterance_out` logs spanning 6 turns
+- sessions/homework/ex8/sess_8e2d34329c98/logs/trace.jsonl — alternative text-mode conversation trace recording a fully committed booking
